@@ -51,6 +51,7 @@ Generator.prototype.configFiles = function configFiles() {
     // requirejs build file
     this.copy('_build.js', 'app/assets/js/build.js');
     this.copy('_favicon.ico', 'app/favicon.ico');
+    this.copy('_r.js', 'app/r.js');
 
     this.mkdir('app/assets/css/');
     this.copy('_app.css', 'app/assets/css/app.css');
