@@ -1,0 +1,49 @@
+<!-- Template File for use with targethtml -->
+<!doctype html>
+  <head>
+    <!-- TODO: Manually write with project name -->
+
+    <title><%= appname %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--(if target app)><!-->
+    <% if (bootstrap) { %>
+    <link href="./css/app.combined.css" rel="stylesheet">
+    <% } else { %>
+    <link href="./css/app.css" rel="stylesheet">
+    <% } %>
+    <!--<!(endif)-->
+    <!--(if target dist)><!-->
+    <link rel="stylesheet" href="./css/app.min.css"/>
+    <!--<!(endif)-->
+  </head>
+  <body>
+  <div class="container">
+    <div class="jumbotron">
+      <div id="main-region">
+        <h3>Starting <%= appname %></h3>
+      </div>
+
+      <div id="dialog-region">
+      </div>
+
+    </div>
+  </div>
+    <!-- require in dev -->
+    <!--(if target app)><!-->
+      <script data-main="./js/require_main" src="./bower_components/requirejs/require.js"></script>
+      <script src="//localhost:35729/livereload.js"></script>
+    <!--<!(endif)-->
+
+    <!-- optimized with r.js -->
+    <!--
+    <script src="./js/vendor/require.js"></script>
+    <script src="./js/require_main.built.js"></script>
+    -->
+
+    <!-- optimized with r.js using almond shim -->
+    <!--(if target dist)><!-->
+    <script defer="defer" src="./js/require_main_built.js"></script>
+    <!--<!(endif)-->
+  </body>
+</html>

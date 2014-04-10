@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - '0.10'
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'generator-marionette-coffee' ]; then cd .. && eval "mv $currentfolder generator-marionette-coffee" && cd generator-marionette-coffee; fi
+
