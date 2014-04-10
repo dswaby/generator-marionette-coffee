@@ -49,7 +49,7 @@ Generator.prototype.configFiles = function configFiles() {
     // requirejs config for app
     this.copy('_require_main.coffee', 'app/assets/coffee/require_main.coffee');
     // requirejs build file
-    this.copy('_build.js', 'app/assets/coffee/build.js');
+    this.copy('_build.js', 'app/assets/js/build.js');
     this.copy('_favicon.ico', 'app/favicon.ico');
 
     this.mkdir('app/assets/css/');
