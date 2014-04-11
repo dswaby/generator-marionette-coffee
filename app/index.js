@@ -3,6 +3,7 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+
 var Generator = module.exports = function Generator(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
     this.copy('editorconfig', '.editorconfig');
@@ -46,23 +47,30 @@ Generator.prototype.configFiles = function configFiles() {
     this.template('_bower.json', 'bower.json');
     this.template('Gruntfile.js');
     this.copy('_README.md', 'README.md');
-    // requirejs config for app
-    this.copy('_require_main.coffee', 'app/assets/coffee/require_main.coffee');
-    // requirejs build file
-    this.copy('_build.js', 'app/assets/js/build.js');
-    this.copy('_favicon.ico', 'app/favicon.ico');
-    this.copy('_r.js', 'app/r.js');
 
+    this.mkdir('app');
+    this.copy('_r.js', 'app/r.js');
+    this.copy('_favicon.ico', 'app/favicon.ico');
+    this.copy('_404.html', 'app/404.html');
+
+    this.mkdir('app/assets');
     this.mkdir('app/assets/css/');
     this.copy('_app.css', 'app/assets/css/app.css');
+    this.mkdir('app/assets/coffee');
+    this.copy('_require_main.coffee', 'app/assets/require_main.coffee');
+
     //test config
     this.mkdir('test');
     this.copy('_SpecRunner.coffee', 'test/SpecRunner.coffee');
+
+
+    // build config
+    // this.mkdir('app/assets/js');
+    this.copy('_build.js', 'app/assets/build.js');
 };
 Generator.prototype.app = function app() {
     //folders
-    this.mkdir('app/assets');
-    this.mkdir('app/assets/coffee');
+
     this.mkdir('app/assets/coffee/apps');
     this.mkdir('app/assets/coffee/entities');
     this.mkdir('app/assets/coffee/common');
