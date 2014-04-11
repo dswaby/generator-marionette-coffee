@@ -79,7 +79,6 @@ Generator.prototype.app = function app() {
 
     // this.copy('_scssApp.scss', 'app/assets/scss/app.scss');
     this.copy('_expressApp.js', 'server/app.js');
-    this.copy('_expressDist.js', 'server/dist.js');
     this.copy('_TestRunner.html', 'test/TestRunner.html');
     this.mkdir('test/coffee/');
     this.copy('_TestSpec.coffee', 'test/coffee/TestSpec.coffee');
