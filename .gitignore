@@ -4,3 +4,4 @@ temp/
 
 TODO.md
 generator-marionette-coffee.sublime-project
+/npm-debug.log
