@@ -210,13 +210,13 @@ module.exports = function (grunt) {
     grunt.task.registerTask('dev', 'subset of common development tasks used in other tasks', function () {
         grunt.task.run(['copy:templates', <%
             if (bootstrap) { %> 'cssmin:combine', <%
-            } %> 'coffee', 'targethtml'
+            } %> 'coffee', 'targethtml:app'
         ]);
     });
     grunt.task.registerTask('test', 'for writing tests, only watches test folder and runs on change', function () {
         grunt.task.run(['coffee:testcoffee', 'connect:test', 'shell:mocha-phantomjs', 'watch:tests']);
     });
     grunt.task.registerTask('build', 'creates optimized distribution', function () {
-        grunt.task.run(['dev', 'shell:buildRequire', 'copy:requireBuilt', 'cssmin:minify', 'express:dist', 'open:build', 'watch:indextemplate']);
+        grunt.task.run(['dev', 'targethtml:dist', 'shell:buildRequire', 'copy:requireBuilt', 'cssmin:minify', 'express:dist', 'open:build', 'watch:indextemplate']);
     });
 };
