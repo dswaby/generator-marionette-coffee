@@ -54,11 +54,16 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     port: '1337',
+                    args: ['../app'],
+                    cmd: process.argv[0],
                     script: 'server/app.js'
                 }
             },
             dist: {
                 options: {
+                    args: ['../dist'],
+                    cmd: process.argv[0],
+                    port: '9000',
                     script: 'server/app.js'
                 }
             }
@@ -137,7 +142,7 @@ module.exports = function (grunt) {
             requireBuilt: {
                 files: [{
                     cwd: './',
-                    src: ['<%%= config.app %>/assets/js/require_main_built.js'],
+                    src: ['<%%= config.app %>/assets/require_main_built.js'],
                     dest: '<%%= config.dist %>/js/require_main_built.js'
                 }]
             }
@@ -153,14 +158,14 @@ module.exports = function (grunt) {
                 },
                 minify: {
                     cwd: './',
-                    src: '<%%= config.app %>/css/app.combined.css',
-                    dest: '<%%= config.app %>/css/app.min.css'
+                    src: '<%%= config.app %>/assets/css/app.combined.css',
+                    dest: '<%%= config.dist %>/css/app.min.css'
                 } <%
             }
             else { %> minify: {
                     cwd: './',
-                    src: '<%%= config.app %>/css/app.css',
-                    dest: '<%%= config.app %>/css/app.min.css'
+                    src: '<%%= config.app %>/assets/css/app.css',
+                    dest: '<%%= config.dist %>/css/app.min.css'
                 } <%
             } %>
         },
@@ -195,6 +200,13 @@ module.exports = function (grunt) {
                 path: 'http://localhost:1234/test/TestRunner.html',
                 app: 'Google Chrome'
             }
+        },
+         rig: {
+            compile: {
+                files: {
+                    'dist/simple.js': ['src/simple.js']
+                }
+            }
         }
     }); <%
     if (bootstrap) { %> grunt.loadNpmTasks('grunt-contrib-cssmin'); <%
@@ -217,6 +229,6 @@ module.exports = function (grunt) {
         grunt.task.run(['coffee:testcoffee', 'connect:test', 'shell:mocha-phantomjs', 'watch:tests']);
     });
     grunt.task.registerTask('build', 'creates optimized distribution', function () {
-        grunt.task.run(['dev', 'targethtml:dist', 'shell:buildRequire', 'copy:requireBuilt', 'cssmin:minify', 'express:dist', 'open:build']);
+        grunt.task.run(['dev', 'targethtml:dist', 'shell:buildRequire', 'copy:requireBuilt', 'cssmin:minify', 'express:dist', 'open:build', 'watch:indextemplate']);
     });
 };
