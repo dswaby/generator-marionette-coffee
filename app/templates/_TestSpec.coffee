@@ -1,4 +1,4 @@
-define ["app",
+define ["js/app",
   "./../../app/assets/bower_components/chai/chai",
   "./../../app/assets/bower_components/sinon/lib/sinon",
   "./../../../test/hello"

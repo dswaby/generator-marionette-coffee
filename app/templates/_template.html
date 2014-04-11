@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--(if target app)><!-->
     <% if (bootstrap) { %>
-    <link href="./assets/css/app.combined.css" rel="stylesheet">
+    <link href="assets/css/app.combined.css" rel="stylesheet">
     <% } else { %>
-    <link href="./assets/css/app.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
     <% } %>
     <!--<!(endif)-->
     <!--(if target dist)><!-->
-    <link rel="stylesheet" href="./assets/css/app.min.css"/>
+    <link rel="stylesheet" href="assets/css/app.min.css"/>
     <!--<!(endif)-->
   </head>
   <body>
@@ -31,7 +31,7 @@
   </div>
     <!-- require in dev -->
     <!--(if target app)><!-->
-      <script data-main="./assets/js/require_main" src="./assets/bower_components/requirejs/require.js"></script>
+      <script data-main="assets/require_main" src="assets/bower_components/requirejs/require.js"></script>
       <script src="//localhost:35729/livereload.js"></script>
     <!--<!(endif)-->
 

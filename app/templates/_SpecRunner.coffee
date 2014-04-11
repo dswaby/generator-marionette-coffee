@@ -1,16 +1,16 @@
 requirejs.config
-  baseUrl: "./../app/assets/js"
+  baseUrl: "./../app/assets"
   paths:
-    backbone: "./../bower_components/backbone/backbone"
-    localstorage: "./../bower_components/backbone.localstorage/backbone.localstorage"
-    jquery: "./../bower_components/jquery/jquery"
-    # "jquery-ui": "./../bower_components/jquery-ui/ui/jquery-ui"
-    underscore: "./../bower_components/underscore/underscore"
-    marionette: "./../bower_components/backbone.marionette/lib/backbone.marionette"
-    tpl: "./../bower_components/requirejs-tpl/tpl"
-    json2: "./../bower_components/json2/json2"
-    chai: "./../bower_components/chai/chai"
-    mocha: "./../bower_components/mocha/mocha"
+    backbone: "./../assets/bower_components/backbone/backbone"
+    localstorage: "./../assets/bower_components/backbone.localstorage/backbone.localstorage"
+    jquery: "./../assets/bower_components/jquery/jquery"
+    # "jquery-ui": "./../assets/bower_components/jquery-ui/ui/jquery-ui"
+    underscore: "./../assets/bower_components/underscore/underscore"
+    marionette: "./../assets/bower_components/backbone.marionette/lib/backbone.marionette"
+    tpl: "./../assets/bower_components/requirejs-tpl/tpl"
+    json2: "./../assets/bower_components/json2/json2"
+    chai: "./../assets/bower_components/chai/chai"
+    mocha: "./../assets/bower_components/mocha/mocha"
 
   # sinon: "./bower_components/sinon/lib/sinon"
   shim:
@@ -29,7 +29,6 @@ requirejs.config
       deps: ["backbone"]
       exports: "Marionette"
 
-    # "jquery-ui": ["jquery"]
 
     localstorage: ["backbone"]
 
