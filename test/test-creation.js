@@ -19,9 +19,33 @@ describe('marionette-coffee generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      // add files you expect to exist here.
-      '.jshintrc',
-      '.editorconfig'
+      // add files you expect to exist here.,
+     '.editorconfig',
+     '.bowerrc',
+     '.gitignore',
+     'package.json',
+     'bower.json',
+     'Gruntfile.js',
+     'README.md',
+     'app/r.js',
+     'app/favicon.ico',
+     'app/404.html',
+     'app/assets/css/app.css',
+     'app/assets/require_main.coffee',
+     'test/SpecRunner.coffee',
+     'app/assets/build.js',
+     'server/app.js',
+     'test/TestRunner.html',
+     'test/coffee/TestSpec.coffee',
+     'test/hello.js',
+     'app/template.html',
+     'app/assets/coffee/app.coffee',
+     'app/assets/coffee/apps/sub_app/sub_app.coffee',
+     'app/assets/coffee/apps/sub_app/hello/hello_view.coffee',
+     'app/assets/coffee/apps/sub_app/hello/hello_controller.coffee',
+     'app/assets/coffee/apps/sub_app/hello/templates/hello_view.tpl',
+     'app/assets/coffee/entities/hello.coffee',
+     'test/coffee/HelloSpec.coffee'
     ];
 
     helpers.mockPrompt(this.app, {
