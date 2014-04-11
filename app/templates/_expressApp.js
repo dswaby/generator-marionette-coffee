@@ -22,11 +22,12 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
+    var appDir = process.argv[2] || '../app';
 
     var app = express();
     app.configure(function() {
         app.set('port', theport);
-        app.set('views', __dirname + '../app');
+        app.set('views', __dirname + appDir);
     });
 
     app.use(function(req, res, next) {
@@ -34,7 +35,7 @@ db.once('open', function callback () {
         next();
     });
     // mount static
-    app.use(express.static(path.join(__dirname, '../app')));
+    app.use(express.static(path.join(__dirname, appDir)));
     app.use(express.static(path.join(__dirname, '../.tmp')));
     app.use(express.cookieParser());
     app.use(express.bodyParser());
@@ -43,7 +44,7 @@ db.once('open', function callback () {
     app.use( express.errorHandler({ dumpExceptions: true, showStack: true }));
 
     app.get('/', function(req, res) {
-        res.sendfile(path.join(__dirname, '../app/index.html'));
+        res.sendfile(path.join(__dirname, appDir + '/index.html'));
     });
 
     http.createServer(app).listen(app.get('port'), function() {
