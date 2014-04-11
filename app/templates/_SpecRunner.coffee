@@ -36,8 +36,9 @@ require [
   #files being tested
   "./../../../test/hello"
   "./../../../test/spec/TestSpec"
+  <% if (!empty) { %>
   "./../../../test/spec/HelloSpec"
-
+  <% } %>
 ], (App) ->
   if window.mochaPhantomJS
     mochaPhantomJS.run()

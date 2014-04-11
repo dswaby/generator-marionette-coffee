@@ -4,6 +4,8 @@ define ["marionette"], (Marionette) ->
 
   App.addRegions
     # add regions
+    mainRegion: "#main-region"
+
 
 
   # route helpers

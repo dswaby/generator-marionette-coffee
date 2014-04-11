@@ -4,7 +4,7 @@ Yeoman generator for marrionette app written in coffescript
 
 * Starting point for new marionette project
 
-* includes hello world type module
+* includes hello world module example
 
 * using boilerplate express server
 
@@ -50,6 +50,13 @@ scaffold a new app:
 ```
 $ mkdir your-app-name && cd your-app-name
 $ yo marionette-coffee
+```
+
+optionally if you wish to leave out the hello world example you can run with --empty option
+
+```
+$ mkdir your-app-name && cd your-app-name
+$ yo marionette-coffee --empty
 ```
 
 ### Directory Structure

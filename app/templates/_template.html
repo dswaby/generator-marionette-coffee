@@ -22,11 +22,14 @@
     <div class="jumbotron">
       <div id="main-region">
         <h3>Starting <%= appname %></h3>
+        <% if (empty) { %>
+        <p>This is a marionette region, this content will be replaced when a view is added</p>
+        <% } %>
       </div>
-
+      <% if (!empty) { %>
       <div id="dialog-region">
       </div>
-
+      <% } %>
     </div>
   </div>
     <!-- require in dev -->

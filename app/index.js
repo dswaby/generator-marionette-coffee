@@ -6,12 +6,10 @@ var chalk = require('chalk');
 
 var Generator = module.exports = function Generator(args, options, config) {
     yeoman.generators.Base.apply(this, arguments);
-    this.copy('editorconfig', '.editorconfig');
-    this.starter = options['empty'];
     // for hooks to resolve on mocha by default
-    options['empty'] = this.empty;
     this.options = options;
     this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+    this.empty = this.options['empty'];
 };
 util.inherits(Generator, yeoman.generators.Base);
 Generator.prototype.askFor = function askFor() {
@@ -41,6 +39,7 @@ Generator.prototype.askFor = function askFor() {
 };
 Generator.prototype.configFiles = function configFiles() {
     // configuration files
+    this.copy('editorconfig', '.editorconfig');
     this.copy('bowerrc', '.bowerrc');
     this.copy('gitignore', '.gitignore');
     this.copy('_package.json', 'package.json');
@@ -83,7 +82,7 @@ Generator.prototype.app = function app() {
     this.mkdir('test/coffee/');
     this.copy('_TestSpec.coffee', 'test/coffee/TestSpec.coffee');
     this.copy('_hello.js', 'test/hello.js');
-    if (this.options.empty) {
+    if (this.options['empty']) {
         this.template('_template.html', 'app/template.html');
         this.copy('_app.coffee', 'app/assets/coffee/app.coffee');
     }
