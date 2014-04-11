@@ -1,5 +1,5 @@
 {
-  "name":"<%%= appname %>",
+  "name":"<%= _.slugify(appname) %>",
   "version": "0.0.1",
   "dependencies": {
 
@@ -18,8 +18,8 @@
     "sinon": "~1.7.3",
     "almond": "0.2.6",
     "backbone.localstorage": "~1.1.7",
-    "json2": "*",<% if (bootstrap) { %>
-     "bootstrap": "~3.0.3"<% } %>
+    "json2": "*"<% if (bootstrap) { %>
+    ,"bootstrap": "~3.0.3"<% } %>
   },
   "devDependencies": {},
   "directory": "bower_components",
