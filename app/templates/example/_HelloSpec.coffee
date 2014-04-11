@@ -1,9 +1,9 @@
 define [
-  "app"
-  "apps/sub_app/hello/hello_view"
+  "js/app"
+  "js/apps/sub_app/hello/hello_view"
   "./../../app/assets/bower_components/chai/chai"
-  "apps/sub_app/hello/hello_controller"
-  "entities/hello"
+  "js/apps/sub_app/hello/hello_controller"
+  "js/entities/hello"
 ], (App, View, chai) ->
   expect = undefined
   expect = chai.expect

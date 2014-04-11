@@ -1,4 +1,4 @@
-define ["app"], (App) ->
+define ["js/app"], (App) ->
   App.module "SubApp", (SubApp, App, Backbone, Marionette, $, _) ->
     App.Router = Marionette.AppRouter.extend(
       appRoutes:
@@ -6,7 +6,7 @@ define ["app"], (App) ->
     )
     API =
       sayHello: ->
-        require ["apps/sub_app/hello/hello_controller"], ->
+        require ["js/apps/sub_app/hello/hello_controller"], ->
           console.log("API hello controller")
           App.SubApp.Hello.Controller.sayHello()
 

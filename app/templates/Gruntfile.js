@@ -14,10 +14,10 @@ module.exports = function (grunt) {
         watch: {
             coffee: {
                 files: ['<%%= config.app %>/assets/coffee/{,**/}*.coffee'],
-                tasks: ['coffee:glob_to_multiple', 'shell:mocha-phantomjs']
+                tasks: ['coffee:glob_to_multiple','coffee:amdConfig', 'shell:mocha-phantomjs']
             },
             tests: {
-                files: ['<%= config.test %>/coffee/*.coffee'],
+                files: ['<%%= config.test %>/coffee/*.coffee'],
                 tasks: ['coffee:testcoffee', 'shell:mocha-phantomjs']
             },
             templates: {
@@ -72,7 +72,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    './<%= config.dist %>/index.html': '<%%= config.app %>/template.html'
+                    './<%%= config.dist %>/index.html': '<%%= config.app %>/template.html'
                 }
             }
         },
@@ -113,6 +113,15 @@ module.exports = function (grunt) {
                 cwd: './',
                 src: ['test/SpecRunner.coffee'],
                 dest: 'test/SpecRunner.js'
+            },
+            amdConfig: {
+                flatten: true,
+                options: {
+                    bare: true
+                },
+                cwd: './',
+                src: ['<%%= config.app %>/assets/require_main.coffee'],
+                dest: '<%%= config.app %>/assets/require_main.js'
             }
         },
         //copy templates
@@ -129,7 +138,7 @@ module.exports = function (grunt) {
                 files: [{
                     cwd: './',
                     src: ['<%%= config.app %>/assets/js/require_main_built.js'],
-                    dest: '<%= config.dist %>/js/require_main_built.js'
+                    dest: '<%%= config.dist %>/js/require_main_built.js'
                 }]
             }
         },
@@ -164,7 +173,7 @@ module.exports = function (grunt) {
                 }
             },
             'buildRequire': {
-                command: 'node r.js -o assets/js/build.js',
+                command: 'node r.js -o assets/build.js',
                 options: {
                     stdout: true,
                     execOptions: {

@@ -1,4 +1,4 @@
-define ["app"], (App) ->
+define ["js/app"], (App) ->
   App.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
     Entities.Hello = Backbone.Model.extend(
       defaults:

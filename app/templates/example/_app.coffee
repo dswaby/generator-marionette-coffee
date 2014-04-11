@@ -15,7 +15,7 @@ define ["marionette"], (Marionette) ->
     Backbone.history.fragment
 
   App.on "initialize:after", ->
-    require ["apps/sub_app/sub_app"], ->
+    require ["js/apps/sub_app/sub_app"], ->
       console.log "Marionette Application Started"
       if Backbone.history
         Backbone.history.start()

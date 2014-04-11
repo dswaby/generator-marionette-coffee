@@ -4,7 +4,7 @@ requirejs.config
     backbone: "./../bower_components/backbone/backbone"
     localstorage: "./../bower_components/backbone.localstorage/backbone.localstorage"
     jquery: "./../bower_components/jquery/jquery"
-    "jquery-ui": "./../bower_components/jquery-ui/ui/jquery-ui"
+    # "jquery-ui": "./../bower_components/jquery-ui/ui/jquery-ui"
     underscore: "./../bower_components/underscore/underscore"
     marionette: "./../bower_components/backbone.marionette/lib/backbone.marionette"
     tpl: "./../bower_components/requirejs-tpl/tpl"
@@ -12,7 +12,7 @@ requirejs.config
     chai: "./../bower_components/chai/chai"
     mocha: "./../bower_components/mocha/mocha"
 
-  # sinon: "../bower_components/sinon/lib/sinon"
+  # sinon: "./bower_components/sinon/lib/sinon"
   shim:
     underscore:
       exports: "_"
@@ -29,7 +29,7 @@ requirejs.config
       deps: ["backbone"]
       exports: "Marionette"
 
-    "jquery-ui": ["jquery"]
+    # "jquery-ui": ["jquery"]
 
     localstorage: ["backbone"]
 
