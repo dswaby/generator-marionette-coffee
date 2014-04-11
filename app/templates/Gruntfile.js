@@ -217,6 +217,6 @@ module.exports = function (grunt) {
         grunt.task.run(['coffee:testcoffee', 'connect:test', 'shell:mocha-phantomjs', 'watch:tests']);
     });
     grunt.task.registerTask('build', 'creates optimized distribution', function () {
-        grunt.task.run(['dev', 'targethtml:dist', 'shell:buildRequire', 'copy:requireBuilt', 'cssmin:minify', 'express:dist', 'open:build', 'watch:indextemplate']);
+        grunt.task.run(['dev', 'targethtml:dist', 'shell:buildRequire', 'copy:requireBuilt', 'cssmin:minify', 'express:dist', 'open:build']);
     });
 };
