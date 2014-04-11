@@ -13,6 +13,7 @@ Yeoman generator for marrionette app written in coffescript
   * Marionette
   * Coffeescript
   * AMD configuration using Requirejs
+  * jQuery Templating
   * Twitter Bootstrap (optional)
   * Mocha unit tests with html testrunner as well as grunt task that will run them headless using phantomjs
   * Organized using module pattern
@@ -101,6 +102,32 @@ $ yo marionette-coffee
   _Requirejs configuration for tests_
   * ____TestRunner.html
 
+Grunt Tasks
+-----------
+```
+$ grunt
+```
+  Default grunt task will
+  * copy template files in coffee to js folder
+  * compile coffeescript
+  * create index file for app folder
+  * start background express server
+  * start background connect server (for testrunner)
+  * run headless mocha tests
+  * open testrunner & app page in browser
+  * watch your files for any changes and reload if there are any
+
+```
+$ grunt build
+```
+  Default grunt task will
+  * copy template files in coffee to js folder
+  * compile coffeescript
+  * create index file for app folder
+  * start background express server
+  * start background connect server (for testrunner)
+  * run headless mocha tests
+  * open optimized app in browser
 
 ###### Still In development
  * SubGenerators
