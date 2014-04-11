@@ -8,70 +8,108 @@ Yeoman generator for marrionette app written in coffescript
 
 * using boilerplate express server
 
-
-###### Includes
+###### Whats included
 
   * Marionette
   * Coffeescript
-  * Requirejs
+  * AMD configuration using Requirejs
   * Twitter Bootstrap (optional)
-  * Mocha unit tests with html testrunner as well as run in phantomjs
+  * Mocha unit tests with html testrunner as well as grunt task that will run them headless using phantomjs
   * Organized using module pattern
     - for more information about the module pattern with marionette, I highly recommend David Sulac's [book on Marionette.js](https://leanpub.com/marionette-gentle-introduction)
 
 
+To Install
+-----------
+
+This generator depends on phantomJS, mongoDb, yeoman, bower and grunt
+
+Install phantomJS
+```
+$ brew install phantomjs
+```
+Install mongoDb
+```
+$ brew install mongodb
+```
+Install mocha-phantomjs:
+```
+$ npm install -g mocha-phantomjs
+```
+Install Yeoman, Bower and Grunt:
+$ npm install -g yo grunt-cli bower
+Install this generator
 ```
 $ npm install -g generator-marionette-coffee
 ```
+### Usage
 
-Finally, initiate the generator:
+scaffold a new app:
 
 ```
+$ mkdir your-app-name && cd your-app-name
 $ yo marionette-coffee
 ```
 
-
+### Directory Structure
 
  * ____app/
 
- * ____assets/
+  * index.html (Generated from template.html)
 
-    * ____coffee/    _all coffeescript in folder will be compiled to js/ folder_
+  * r.js
+  _optimizer_
 
-      * ____app.coffee0
-        * ____apps/
-            *____sub_app/ _sub_applications_
-              *_____sub_app_.coffee _mediator for sub_application_
+  * template.html
+  _generates html template for index files in app/ and dist/ for more info see [targetHtml](https://github.com/changer/grunt-targethtml)_
 
-      * ____build.js    _build configuration for r.js_
-      * ____entities/
-      _for entity files_
+   * ____assets/
 
-      * ____require_main.coffee
-      _main configuration file_
-    * ____css/
+      * ____coffee/    _all coffeescript in folder will be compiled to js/ folder_
 
-      * (Generated)index.html
-      * r.js _optimizer_
-      * template.html _generates html for app/ and dist/, uses targetAdmin to conditionally include certain lines_
-    * server/
-      * ____app.js   _express server_
-  * ____test/
-    * ____coffee/   _coffeescript for test specs_
+        * ____app.coffee0
+          * ____apps/
+            * ____sub_app/ _for sub-application folders_
 
-    * ____spec/
-      _where Specs in coffeescript is compiled to_
-    * ____SpecRunner.coffee
-          _Requirejs configuration for tests_
-    * ____TestRunner.html
+              * _____sub_app_.coffee
+              _mediator for sub_application_
 
-[More involved and further along marionette generator I recommend looking at before using this one](https://github.com/mrichard/generator-marionette)
+        * ____build.js
+        _build configuration for r.js_
 
-### Still in development
-Generators for
- * modules
- * entities
+        * ____entities/
+        _for entity files_
+
+        * ____require_main.coffee
+        _main configuration file_
+
+      * ____css/
+
+
+
+* server/
+  * ____app.js
+  _express server_
+
+* ____test/
+  * ____coffee/
+  _coffeescript for test specs_
+  * ____spec/
+  _where the specs written in coffeescript are compiled to_
+
+  * ____SpecRunner.coffee
+  _Requirejs configuration for tests_
+  * ____TestRunner.html
+
+
+###### Still In development
+ * SubGenerators
+  * application module
+  * entities
 
 ## License
 
 MIT
+
+[Another great marionette generator worth checking out](https://github.com/mrichard/generator-marionette)
+
