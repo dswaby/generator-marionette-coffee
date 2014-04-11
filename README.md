@@ -127,6 +127,7 @@ $ grunt build
   * start background express server
   * start background connect server (for testrunner)
   * run headless mocha tests
+  * create single optimized file for all js
   * open optimized app in browser
 
 ###### Still In development
