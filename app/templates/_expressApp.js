@@ -4,7 +4,6 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var async = require('async');
-var socketIO = require('socket.io');
 var mongoose = require('mongoose');
 
 
