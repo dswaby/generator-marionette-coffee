@@ -1,6 +1,6 @@
 {
   "name": "generator-marionette-coffee",
-  "version": "0.0.321",
+  "version": "0.0.322",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
