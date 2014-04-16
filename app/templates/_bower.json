@@ -9,10 +9,10 @@
     "requirejs-text": "~2.0.5",
     "backbone-amd": "~1.0.0",
     "underscore-amd": "~1.4.4",
-    "modernizr": "~2.6.2",
+    "modernizr": "~2.7.2",
     "backbone.marionette": "~1.7.3",
-    "backbone.wreqr": "~0.1.0",
-    "backbone.babysitter": "~0.0.6",
+    "backbone.wreqr": "^1.0.0",
+    "backbone.babysitter": "~0.1.0",
     "mocha": "~1.12.0",
     "chai": "~1.7.2",
     "sinon": "~1.7.3",
@@ -20,11 +20,12 @@
     "backbone.localstorage": "~1.1.7",
     "json2": "*"<% if (bootstrap) { %>
     ,"bootstrap": "~3.0.3"<% } %>
+    <% if (foundation) { %>
+    ,"foundation": "zurb/bower-foundation"<% } %>
   },
   "devDependencies": {},
   "directory": "bower_components",
   "resolutions": {
-    "backbone.babysitter": "~0.1.0",
-    "backbone.wreqr": "^1.0.0"
+    "jquery": "~1.9.0"
   }
 }

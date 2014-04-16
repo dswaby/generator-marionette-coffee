@@ -147,27 +147,25 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        cssmin: { <%
-            if (bootstrap) { %> combine: {
-                    options: {
-                        banner: '/* css for <%%= appname %> v0.0.0 */'
-                    },
-                    files: {
-                        './<%%= config.app %>/assets/css/app.combined.css': ['./<%%= config.app %>/assets/bower_components/bootstrap/dist/css/bootstrap.css', './<%%= config.app %>/assets/css/app.css']
-                    }
+        cssmin: {
+            combine: {
+                options: {
+                    banner: '/* css for <%%= appname %> v0.0.0 */'
+                },
+                files: {<% if (bootstrap) { %>
+                    './<%%= config.app %>/assets/css/app.combined.css': ['./<%%= config.app %>/assets/bower_components/bootstrap/dist/css/bootstrap.css', './<%%= config.app %>/assets/css/app.css']
+                <% } else if (foundation) { %>
+                    './<%%= config.app %>/assets/css/app.combined.css': ['./<%%= config.app %>/assets/bower_components/foundation/css/foundation.css', './<%%= config.app %>/assets/css/app.css']
+                <% } else if (!foundation && !bootstrap) { %>
+                    './<%%= config.app %>/assets/css/app.css': ['./<%%= config.app %>/assets/css/app.css']
+                <% } %>}
                 },
                 minify: {
-                    cwd: './',
-                    src: '<%%= config.app %>/assets/css/app.combined.css',
+                    cwd: './',<% if (!foundation && !bootstrap) { %>
+                    src: '<%%= config.app %>/assets/css/app.css',<% } else { %>
+                    src: '<%%= config.app %>/assets/css/app.combined.css',<% } %>
                     dest: '<%%= config.dist %>/css/app.min.css'
-                } <%
-            }
-            else { %> minify: {
-                    cwd: './',
-                    src: '<%%= config.app %>/assets/css/app.css',
-                    dest: '<%%= config.dist %>/css/app.min.css'
-                } <%
-            } %>
+                }
         },
         shell: {
             'mocha-phantomjs': {
@@ -208,9 +206,9 @@ module.exports = function (grunt) {
                 }
             }
         }
-    }); <%
-    if (bootstrap) { %> grunt.loadNpmTasks('grunt-contrib-cssmin'); <%
-    } %> grunt.loadNpmTasks('grunt-express-server');
+    });
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-coffee');
@@ -220,9 +218,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-open');
     grunt.registerTask('default', ['dev', 'express:dev', 'connect:test', 'shell:mocha-phantomjs', 'open:dev', 'open:testrunner', 'watch']);
     grunt.task.registerTask('dev', 'subset of common development tasks used in other tasks', function () {
-        grunt.task.run(['copy:templates', <%
-            if (bootstrap) { %> 'cssmin:combine', <%
-            } %> 'coffee', 'targethtml:app'
+        grunt.task.run(['copy:templates', 'cssmin:combine', 'coffee', 'targethtml:app'
         ]);
     });
     grunt.task.registerTask('test', 'for writing tests, only watches test folder and runs on change', function () {
