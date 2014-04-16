@@ -35,11 +35,11 @@ Generator.prototype.askFor = function askFor() {
         this.foundation = false;
 
         this.appname = props.appname;
-        if (props.cssFramework.toUpperCase() === 'B')
+        if (props.cssFramework && props.cssFramework.toUpperCase() === 'B')
         {
             this.bootstrap = true;
         }
-        if (props.cssFramework.toUpperCase() === 'F')
+        if (props.cssFramework && props.cssFramework.toUpperCase() === 'F')
         {
             this.foundation = true;
         }
