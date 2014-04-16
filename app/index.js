@@ -25,18 +25,29 @@ Generator.prototype.askFor = function askFor() {
         message: 'What would you like to name this app?',
         default: 'App'
     }, {
-        type: 'confirm',
-        name: 'bootstrap',
-        message: 'Include twitter bootstrap?',
-        default: true
+        type: 'string',
+        name: 'cssFramework',
+        message: 'Include a CSS framework? twitter bootstrap(B), foundation(F), I don\'t want to include a CSS framework(N)?',
+        default: 'B'
     }];
     this.prompt(prompts, function (props) {
+        this.bootstrap = false;
+        this.foundation = false;
+
         this.appname = props.appname;
-        this.bootstrap = props.bootstrap;
+        if (props.cssFramework.toUpperCase() === 'B')
+        {
+            this.bootstrap = true;
+        }
+        if (props.cssFramework.toUpperCase() === 'F')
+        {
+            this.foundation = true;
+        }
         done();
         cb();
     }.bind(this));
 };
+
 Generator.prototype.configFiles = function configFiles() {
     // configuration files
     this.copy('editorconfig', '.editorconfig');
@@ -57,16 +68,14 @@ Generator.prototype.configFiles = function configFiles() {
     this.copy('_app.css', 'app/assets/css/app.css');
     this.mkdir('app/assets/coffee');
     this.copy('_require_main.coffee', 'app/assets/require_main.coffee');
-
     //test config
     this.mkdir('test');
     this.copy('_SpecRunner.coffee', 'test/SpecRunner.coffee');
-
-
     // build config
     // this.mkdir('app/assets/js');
     this.copy('_build.js', 'app/assets/build.js');
 };
+
 Generator.prototype.app = function app() {
     //folders
 
